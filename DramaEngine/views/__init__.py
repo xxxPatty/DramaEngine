@@ -7,9 +7,9 @@ Created on Sat May 21 16:05:37 2022
 """
 
 from .index_web import index_web
-from .example_api import example_api
+from .search_api import search_api
 
-blueprint_prefix = [(example_api, "/api")]
+blueprint_prefix = [(search_api, ""), (index_web, "")]
 
 def register_blueprint(app):
     for blueprint, prefix in blueprint_prefix:
