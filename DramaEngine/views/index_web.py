@@ -11,5 +11,5 @@ from flask import Blueprint, render_template
 index_web=Blueprint('index_web', __name__)
 
 @index_web.route("/index")
-def exchange():
+def index():
     return render_template("index.html")
