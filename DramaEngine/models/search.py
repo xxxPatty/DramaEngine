@@ -9,6 +9,7 @@ Created on Thu May 12 10:45:22 2022
 import requests
 import json
 import jieba
+from jieba import analyse
 from googletrans import Translator
 import re
 
@@ -25,10 +26,10 @@ def search_by_description_model(tv_or_movie, genres_ids, user_description):
     # # genres_ids = [28, 12, 878]
     # genres_ids = [16, 35, 14, 10402]
     
-    # genres_id_strs = ""
-    # for genres_id in genres_ids:
-    #     genres_id_strs += str(genres_id) + ","
-    # genres_id_strs = genres_id_strs[:-1]
+    genres_id_strs = ""
+    for genres_id in genres_ids:
+        genres_id_strs += str(genres_id) + ","
+    genres_id_strs = genres_id_strs[:-1]
     
     # #使用者的描述
     # # user_description = "主角鳴人體內封印著九尾妖狐，因此從小被排擠。為了獲得其他人的認同，夢想當上火影。"

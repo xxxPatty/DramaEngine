@@ -9,8 +9,6 @@ Created on Sat May 21 15:52:43 2022
 from flask import Flask
 from flask import render_template
 from views import register_blueprint
-
-from flask import Flask
 from flask_cors import CORS
 import models
 from views import register_blueprint
