@@ -10,7 +10,7 @@ import requests
 import json
 import flask
 from flask import request, Blueprint, jsonify
-from modesl import search
+from models import search
 
 search_api=Blueprint('search_api', __name__)
 
