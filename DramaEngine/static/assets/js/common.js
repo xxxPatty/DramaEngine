@@ -1,6 +1,7 @@
 var prefix = "http://192.168.0.171:8082/";
 var geners = "get_all_gener";
 
+var buttonArr;
 
 function getGeners(){
     var url = prefix + geners;
@@ -12,13 +13,12 @@ function getGeners(){
         
         //如果成功的話
         success: function(data){//這裡拿到的data是一個Object陣列
-            console.log("success");//看到時候有沒有成功
             console.log(data);
             var result = data.result;
             
             var myButtonHtml = "";
             for(var i=0; i<result.length; i++){
-                myButtonHtml += `<div id="${result[i].id}" class="Genres">${result[i].name}</div>`;
+                myButtonHtml += `<div id="${result[i].id}" class="Genres" onclick="clickButton(${result[i].id})">${result[i].name}</div>`;
             }
             document.getElementById("Genres_form").innerHTML = myButtonHtml;
         },
@@ -30,11 +30,21 @@ function getGeners(){
     });
 }
 
-function toggleButton(id){
-
+function clickButton(id){
+    var index = buttonArr.indexOf(id);
+    if(index==-1){ //代表原本沒有
+        buttonArr.push(id);
+    }
+    else{ //代表原本有
+        buttonArr.splice(index, 1);
+    }
+    
+    console.log(`目前的陣列: `);
+    console.log(buttonArr);
 }
 
 function start(){
+    buttonArr = [];
     getGeners();
 }
 
