@@ -21,17 +21,34 @@
 
         <div id="user_input" class="test_float">
           <div class="temp">
+
+            <!-- 選電影/影集 START -->
+            <div id="Genres_input" class="input_type">
+              <img src="../static/img/play2.png" class="icon_img"/> choose movie or tv</br></br>
+              <div>
+                <select id="type">
+                  <option value="0">影集</option>
+                  <option value="1">電影</option>
+                </select>
+              </div>
+            </div>
+            <!-- 選電影/影集 END -->
+
+            <!-- 選種類 START -->
             <div id="Genres_input" class="input_type">
               <img src="../static/img/play2.png" class="icon_img"/> choose the genres of movie</br></br>
 
               <!-- 放種類的button -->
               <div id="Genres_form"></div>
             </div>
+            <!-- 選種類 END -->
 
+            <!-- 描述 START -->
             <div id="Description_input" class="input_type">
               <img src="../static/img/play2.png" class="icon_img"> description the movie</br>
               <input id="Description" type="text" placeholder="ex:" ></br>
             </div>
+            <!-- 描述 END -->
 
             <div id="input_input" class="input_type">
               <button id="dealing" type="button" onclick="search()">search!</button>

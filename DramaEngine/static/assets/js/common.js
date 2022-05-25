@@ -49,8 +49,11 @@ function search(){
     var url = prefix + search_by_des;
     var description = document.getElementById("Description").value;
 
+    var e = document.getElementById("type");
+    var type = parseInt(e.value);
+
     var request = {
-        "tv_or_movie": 1,
+        "tv_or_movie": type,
         "genres_ids": buttonArr,
         "user_description": description
     };
