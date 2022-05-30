@@ -17,7 +17,9 @@ search_api=Blueprint('search_api', __name__)
 @search_api.route('search_by_description', methods=['post'])
 def search_by_description():
     data = request.get_json()
-    genres = data['genres']     #類型list
+    user_genres = data['user_genres']     #類型list
     user_description = data['user_description']     #描述string
-    result = search.search_by_description_model(genres, user_description)
+    result = search.search_by_description_model(user_genres, user_description)
     return jsonify({"result":result})
+
+

@@ -16,6 +16,10 @@ build_db_api=Blueprint('build_db_api', __name__)
 
 @build_db_api.route('build_db', methods=['get'])
 def build_db():
-    data = request.get_json()
     buildDB.buildDB()
     return jsonify({"result":"Build DB sucess."})
+
+@build_db_api.route('delete_stop_words', methods=['get'])
+def delete_stop_words():
+    buildDB.delete_stop_words_model()
+    return jsonify({"result":"Delete stop words sucess."})
