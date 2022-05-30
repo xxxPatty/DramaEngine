@@ -50,7 +50,7 @@ def search_by_description_model(user_genres, user_description):  #!!!要多欄�
     
     for result in sorted_oupput_movies[0:20]:
         print(result["title"])
-        print(result["scoress"])
+        print(result["scores"])
         
     return sorted_oupput_movies
         
