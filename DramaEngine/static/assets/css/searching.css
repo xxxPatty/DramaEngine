@@ -1,0 +1,148 @@
+
+.Genres{
+
+    width: max-content;
+    border: 5px solid #72625e;
+    border-radius: 25px;
+
+    
+
+}
+.Genres:hover{
+
+    cursor: pointer;
+    border: 5px solid #ff7954;
+
+}
+
+.C_Genres{
+
+    width: max-content;
+    background: #af513a;
+    border: 5px solid #af513a;
+    border-radius: 25px;
+
+    
+
+}
+.C_Genres:hover{
+
+    cursor: pointer;
+    background: #af513a;
+    border: 5px solid #ff7954;
+
+}
+
+.keyarr{
+
+	background: #af513a;
+    border: solid #af513a;
+	width: max-content;
+	border-width:3px 6px;
+    border-radius: 25px;
+
+	margin: 0px 5px;
+
+	position:inherit;
+	top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+
+}
+
+.key_C{
+	border-style: none;
+    background-color: #af513a;
+    cursor: pointer;
+    width: 3px;
+}
+
+
+
+#dealing {
+	
+	transition: all 0.3s ease;
+	overflow: hidden;
+	outline: none;
+  }
+#dealing {
+
+	color:#ff7954;
+	width: 130px;
+	height: 30px;
+	padding: 5px 10px;
+	border: 2px solid #ff7954;
+	font-family: 'Lato', sans-serif;
+	font-weight: 500;
+	background: transparent;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+  }
+  
+  
+
+#dealing:hover {
+	color: black;
+	font-weight:bolder;
+	background:#ff7954;
+	border-radius: 15px;
+  }
+
+  
+  
+
+
+.loader{
+	-webkit-perspective:100px;
+	perspective: 700px;
+}
+
+.loader>span{
+	font-size: 30px;
+	font-family: "franklin gothic medium",sans-serif;
+	display: inline-block;
+	animation:flip 2.6s infinite linear;
+	transform-origin:0 20%;
+	transform-style:preserve-3d;
+	-webkit-transform-style:preserve-3d;
+}
+
+@keyframes flip{
+	35%{
+		transform: rotateX(360deg);
+	}
+	100%{
+		transform: rotatex(360deg);
+	}
+}
+
+
+.loader>span:nth-child(even){
+	color:red;
+}
+
+.loader>span:nth-child(2){
+	animation-delay: 0.3s;
+}
+
+.loader>span:nth-child(3){
+	animation-delay: 0.6s;
+}
+
+.loader>span:nth-child(4){
+	animation-delay: 0.9s;
+}
+
+.loader>span:nth-child(5){
+	animation-delay: 1.2s;
+}
+
+.loader>span:nth-child(6){
+	animation-delay: 1.5s
+}
+
+.loader>span:nth-child(7){
+	animation-delay: 1.8s
+}

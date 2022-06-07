@@ -92,13 +92,21 @@ body {
     display: flex;
     flex-direction: column ;
     justify-content: center;
-    justify-content:space-evenly;
+    justify-content:space-between;
 
 
     width: 90%;
     height: 90%;
 
     
+}
+
+.inpt_type{
+
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    justify-content:space-between;
 }
 
 .user_input{
@@ -113,39 +121,39 @@ body {
     width: 20px;
 }
 
-#Description{
+.input_text{
 
     width: 80%;
 
     position:relative;
-    top: 80%;
+    top: 50%;
     left:50%;
     transform: translate(-50%,-50%);
     
 }
 
 
-#Genres_form{
+#input_form{
+
     display: flex;
-    flex-direction: row ;
+    flex-direction: row;
     flex-wrap:wrap;
-    
-    justify-content:space-around;
 
-}
+    width: 80%;
 
-.Genres{
-
-    width: max-content;
-    border: 5px solid #72625e;
-    border-radius: 25px;
-
+    position:relative;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
     
 
 }
-.Genres:hover{
 
-    cursor: pointer;
-    border: 5px solid #ff7954;
+#input_input{
 
+    display: flex;
+    justify-content: center;
 }
+
+
+

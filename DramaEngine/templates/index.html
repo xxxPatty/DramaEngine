@@ -5,12 +5,26 @@
 
     <!-- 引用css, js -->
     <link rel="stylesheet" type="text/css" href="../static/assets/css/initial.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/searching.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/movie_list.css">
     <script src="../static/assets/js/common.js"></script>
+    <script src="../static/assets/js/user_act.js"></script>
     <!-- <script src="js/jquery/jquery-2.2.4.min.js"></script> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   </head>
   <body>
     
+    <div id="change_page">
+
+      <div id="Searching">
+          <a href="index.html" class="button">Search</a>
+      </div>
+
+      <div id="Recommend">
+          <a href="recommend.html" class="button">Recommend</a>
+      </div>
+
+    </div>
 
     <div id="title_id">
         <div id="title_name">Drama Engine</div></br>
@@ -21,19 +35,29 @@
 
         <div id="user_input" class="test_float">
           <div class="temp">
+
             <div id="Genres_input" class="input_type">
               <img src="../static/img/play2.png" class="icon_img"/> choose the genres of movie</br></br>
 
               <!-- 放種類的button -->
-              <div id="Genres_form"></div>
+              <div id="Genres_form" class="input_form"></div>
+              <input id="Genres_user" class="input_text" type="text" placeholder="ex:喜劇/卡通" onkeypress="inputKey(event)"/>
+            </div>
+
+            <div id="Keys_input" class="input_type">
+              <img src="../static/img/play2.png" class="icon_img"/> choose the keys of movie</br></br>
+
+              <!-- 印象深刻的單詞 -->
+              <div id="Keys_form"  class="input_form"></div>
+              <input id="Keys_user" class="input_text" type="text" placeholder="ex:任意門/竹蜻蜓/銅鑼燒" onkeypress="inputKey(event)"/>
             </div>
 
             <div id="Description_input" class="input_type">
               <img src="../static/img/play2.png" class="icon_img"> description the movie</br>
-              <input id="Description" type="text" placeholder="ex:" ></br>
+              <input id="Description" class="input_text" type="text" placeholder="ex:" ></br>
             </div>
 
-            <div id="input_input" class="input_type">
+            <div id="input_input" class="input_type" >
               <button id="dealing" type="button" onclick="search()">search!</button>
             </div>
 
@@ -42,6 +66,7 @@
 
         <!-- 搜尋結果 -->
         <div id="sever_output" class="test_float">
+ 
         </div>
 
     </div>
