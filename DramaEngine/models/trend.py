@@ -17,6 +17,8 @@ from pymongo import MongoClient
 import datetime
 from dateutil.relativedelta import relativedelta
 
+from opencc import OpenCC
+
 #本月
 #本季
 #今年
@@ -57,30 +59,32 @@ def get_trend(method, year):
     gener_id_to_name = {}
     querystring = {"api_key":"caba0bd5cf43c08405f1e55ef4c591a7", "language":"zh-TW"}
     response = requests.request("GET", url, params=querystring)
+    cc = OpenCC('s2t')
     for gener in response.json()['genres']:
-        gener_id_to_name[gener['id']] = gener['name']
+        gener_id_to_name[gener['id']] = cc.convert(gener['name'])
     
     #統計電影的類型、關鍵字出現次數
     trend = {}
     trend['gener'] = {}
     trend['keywords'] = {}
-    print("電影: ")
+    #print("電影: ")
     for movie in data:
         #print("電影名稱: "+movie['title'])
         #print("上映日期: "+movie['release_date'])
         #print("----------")
         
         for gener in movie['genre_ids']:
-            if gener not in trend['gener']:
-                trend['gener'][gener] = [gener_id_to_name[gener], 1]
+            if gener_id_to_name[gener] not in trend['gener']:
+                trend['gener'][gener_id_to_name[gener]] = 1
             else:
-                trend['gener'][gener][1] = trend['gener'][gener][1] + 1
+                trend['gener'][gener_id_to_name[gener]] += 1
         
         for key in movie['keywords']:
-            if key not in trend['gener']:
+            if key not in trend['keywords']:
                 trend['keywords'][key] = 1
             else:
                 trend['keywords'][key] += 1
-                print("有重複的keyword: " + key)
+                if trend['keywords'][key]>5:
+                    print("有重複的keyword: " + key)
                 
     return trend
