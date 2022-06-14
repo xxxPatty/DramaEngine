@@ -12,8 +12,9 @@ from . import _db
 import jieba
 from jieba import analyse
 from googletrans import Translator
-
-stop_words = [" ", "!", ",", ".", "-", ":", "'", "！", "，", "。", "－", "一", "_", "＿", "…", "：", "(",  ")", "（", "）", "＆", "¿", "?", "*", "．", "·", "~", "...", "+", "、", "/", "我", "是", "她", "他", "他們", "我們","的", "上", "與", "一個", "一名", "女主角", "男主角", "主角", "之", "人", "小", "大","這個", "在", "來", "人們", "人類", "成為", "透過", "版", "他的", "發現", "原來","自己", "想要", "決定", "開始", "其中", "因為", "喜歡", "應該", "為", "這次", "吧"]
+import re
+#r"\",
+stop_words = [" ", "!", ",", ".", "-", ":", "'", "！", "，", "。", "－", "一", "_", "＿", "…", "：", "(",  ")", "（", "）", "＆", "¿", "?", "*", "．", "·", "~", "...", "+", "、", "/", "我", "是", "她", "他", "他們", "我們","的", "上", "與", "一個", "一名", "女主角", "男主角", "主角", "之", "人", "小", "大","這個", "在", "來", "人們", "人類", "成為", "透過", "版", "他的", "發現", "原來","自己", "想要", "決定", "開始", "其中", "因為", "喜歡", "應該", "為", "這次", "吧", 'ン','ー','Go','&','in','the','A','ç','The','of','La','Ni','ñ','a','Gun','の','No','s','Nothing','de','Up','We','for','о','р','In','All','Film','్','at','প','া','য','ു','du','Le','い','and','Me','ó','Live','Vai','os','Last','Ever','오','н','е','а','к','л','e','Big','la','l','You','World','м','т','on','и','Is','to','Win','pi','ù','bello','C','est','M','é','m','En','es','S','O','pel','í','cula','El','el','y','New','One','House','Part','ร','น','o','Family','á','Un','City','L','del', 'by','en','et']
 def buildDB():      
     api_key = "f53d31e8101decd04ef4135886d2db17"
     
@@ -35,7 +36,10 @@ def buildDB():
                 movie["overview"] = movie["overview"].replace(".", " ")
                 #default回傳前20名
                 tags = jieba.analyse.extract_tags(movie["overview"])
-                movie["keywords"] = tags
+                movie["keywords"] = []
+                for word in tags:
+                    if word not in stop_words:
+                        movie["keywords"].append(word)
                 
                 #拿到所有電影各自的既有關鍵字並翻譯
                 query_keywords_url = "https://api.themoviedb.org/3/movie/"+str(movie["id"])+"/keywords?api_key="+api_key
@@ -62,6 +66,8 @@ def buildDB():
 def delete_stop_words_model():  
     all_db_movie = [{'id': i['id'], 'keywords': i['keywords']} for i in _db.MovieInfo_COLLECTION.find()]
     _db.MovieInfo_COLLECTION.update_many({}, {'$pull':{'keywords':{'$in':stop_words}}})
+    regx = re.compile("^[0-9]", re.IGNORECASE)
+    _db.MovieInfo_COLLECTION.update_many({}, {'$pull':{'keywords':regx}})
 
                 
                 
