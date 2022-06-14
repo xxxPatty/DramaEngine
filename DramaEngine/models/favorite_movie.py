@@ -40,7 +40,8 @@ def get_my_favorite(movie_id):
     for movie in cursor:
         result_gener = [g for g in gener if g in movie["genre_ids"]]
         result_keywords = [k for k in keywords if k in movie["keywords"]]
-        movie["scores"] = len(result_gener) + len(result_keywords)
+        #movie["scores"] = len(result_gener) + len(result_keywords)
+        movie["scores"] = len(result_keywords)
         if movie["scores"] != 0 and movie["id"] not in output_movies_id and movie["id"] not in favorites:
             output_movies.append(movie)
             output_movies_id.append(movie["id"])
