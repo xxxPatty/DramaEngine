@@ -84,7 +84,10 @@ def get_trend(method, year):
                 trend['keywords'][key] = 1
             else:
                 trend['keywords'][key] += 1
-                if trend['keywords'][key]>5:
-                    print("有重複的keyword: " + key)
-                
+    #trend['gener'] = sorted(trend['gener'].items(), key=lambda x: x[1], reverse=True)
+    #trend['keywords'] = sorted(trend['keywords'].items(), key=lambda x: x[1], reverse=True)
+    '''
+    for g in trend['gener']:
+        print(g[0] + " - " + str(g[1]))
+    ''' 
     return trend

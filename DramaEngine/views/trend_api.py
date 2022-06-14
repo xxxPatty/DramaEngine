@@ -28,7 +28,6 @@ def get_trend():
     method = para['method']
     year = para['years']
     data = trend.get_trend(method,year)
-    
     #print(data)
     
     return jsonify({"data": json.loads(json_util.dumps(data))})
