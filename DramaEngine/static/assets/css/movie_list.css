@@ -47,6 +47,8 @@
 
 .movie{
 
+    display: flex;
+    justify-content: space-between;
     border-radius: 15px;
     border: 2px solid #ff7954;
     padding: 10px;

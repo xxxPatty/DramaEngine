@@ -10,9 +10,8 @@ from .index_web import index_web
 from .search_api import search_api
 from .trend_api import trend_api
 from .favorite_movie_api import favorite_movie_api
-from .build_db_api import build_db_api
 
-blueprint_prefix = [(search_api, ""), (index_web, ""), (trend_api, ""), (favorite_movie_api, ""), (build_db_api, "")]
+blueprint_prefix = [(search_api, ""), (index_web, ""), (trend_api, ""), (favorite_movie_api, "")]
 
 def register_blueprint(app):
     for blueprint, prefix in blueprint_prefix:

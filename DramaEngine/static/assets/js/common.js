@@ -4,6 +4,7 @@ var search_by_des = "search_by_description";
 
 var buttonArr;
 
+
 function getGeners(){
     var url = prefix + geners;
     $.ajax({
@@ -47,7 +48,7 @@ function clickButton(id){
     console.log(buttonArr);
 }
 
-
+///*
 function search(){
     loading_ain();
     console.log("開始搜尋");
@@ -77,7 +78,17 @@ function search(){
             var moviesHtml = "";
             moviesHtml+='<div class="show_movie" id="output_display">';
             for(var i=0; i<result.length; i++){
-                moviesHtml += `<div class="movie">${result[i].title}__</div>`;
+                moviesHtml += `<div class="movie">${result[i].title}`;
+                tt=i.toString();
+                var index = favoriteArr.indexOf(tt);
+                if(index==-1){ //代表原本沒有
+                    moviesHtml += `<i id="${result[i].id}" class="fa fa-heart-o" style="font-size:24px;color:red" onclick="clickLike(event)"></i></div>`;
+                }
+                else{ //代表原本有
+                    
+                    moviesHtml += `<i id="${result[i].id}" class="fa fa-heart" style="font-size:24px;color:red" onclick="clickLike(event)"></i></div>`;
+                }
+                
                 console.log(`電影結果: ${result[i].title}`);
             }
             moviesHtml+='</div>';
@@ -85,15 +96,16 @@ function search(){
                 moviesHtml = "無結果";
             }
 
-            document.getElementById("sever_output").innerHTML = moviesHtml;
+    document.getElementById("sever_output").innerHTML = moviesHtml;
         },
         error: function(){
             console.log("error");
         }
     });
 }
-
-/*測試排版用
+//*/
+/*
+//測試排版用
 function search(){
     var response={result:[{"title":"電影1"},{"title":"電影2"},{"title":"電影3"},{"title":"電影4"},{"title":"電影5"},{"title":"電影6"},{"title":"電影7"},{"title":"電影8"},{"title":"電影9"},{"title":"電影10"},{"title":"電影1"},{"title":"電影2"},{"title":"電影3"},{"title":"電影4"},{"title":"電影5"},{"title":"電影6"},{"title":"電影7"},{"title":"電影8"},{"title":"電影9"},{"title":"電影10"}]};
     result=response.result;
@@ -101,7 +113,17 @@ function search(){
     var moviesHtml = "";
     moviesHtml+='<div class="show_movie" id="output_display">';
             for(var i=0; i<result.length; i++){
-                moviesHtml += `<div class="movie">${result[i].title}__</div>`;
+                moviesHtml += `<div class="movie">${result[i].title}`;
+                tt=i.toString();
+                var index = favoriteArr.indexOf(tt);
+                if(index==-1){ //代表原本沒有
+                    moviesHtml += `<i id="`+i+`" class="fa fa-heart-o" style="font-size:24px;color:red" onclick="clickLike(event)"></i></div>`;
+                }
+                else{ //代表原本有
+                    
+                    moviesHtml += `<i id="`+i+`" class="fa fa-heart" style="font-size:24px;color:red" onclick="clickLike(event)"></i></div>`;
+                }
+                
                 console.log(`電影結果: ${result[i].title}`);
             }
             moviesHtml+='</div>';
@@ -130,7 +152,12 @@ function loading_ain(){
 function start(){
     buttonArr = [];
     //getGeners();
+
+    loaddata();
+
     //search();
+
+    
 
 }
 

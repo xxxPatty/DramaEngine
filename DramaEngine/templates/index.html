@@ -7,31 +7,31 @@
     <link rel="stylesheet" type="text/css" href="../static/assets/css/initial.css">
     <link rel="stylesheet" type="text/css" href="../static/assets/css/searching.css">
     <link rel="stylesheet" type="text/css" href="../static/assets/css/movie_list.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/navigation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <script src="../static/assets/js/common.js"></script>
     <script src="../static/assets/js/user_act.js"></script>
+    <script src="../static/assets/js/favorite.js"></script>
     <!-- <script src="js/jquery/jquery-2.2.4.min.js"></script> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    
   </head>
   <body>
+
     
-    <div id="change_page">
+  <nav class="stroke">
+    <div id="title_name">Drama Engine</div>
+    <ul>
+      <li><a href="index.html" class="button">Search</a></li>
+      <li><a href="recommend.html" class="button">Recommend</a></li>
+      <li><a href="trend.html">trend</a></li>
+    </ul>
+  </nav>
+    
+    
 
-      <div id="Searching">
-          <a href="index.html" class="button">Search</a>
-      </div>
-
-      <div id="Recommend">
-          <a href="recommend.html" class="button">Recommend</a>
-      </div>
-
-    </div>
-
-    <div id="title_id">
-        <div id="title_name">Drama Engine</div></br>
-        <div id="title_detial">search the movie you want</div>
-    </div>
-
-    <div id="test_display">
+    <div class="test_display">
 
         <div id="user_input" class="test_float">
           <div class="temp">
@@ -66,6 +66,8 @@
 
         <!-- 搜尋結果 -->
         <div id="sever_output" class="test_float">
+
+          <i class="fa fa-heart-o" style="font-size:24px;color:red" ></i>
  
         </div>
 

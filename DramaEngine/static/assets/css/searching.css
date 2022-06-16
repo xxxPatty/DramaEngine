@@ -1,38 +1,3 @@
-
-.Genres{
-
-    width: max-content;
-    border: 5px solid #72625e;
-    border-radius: 25px;
-
-    
-
-}
-.Genres:hover{
-
-    cursor: pointer;
-    border: 5px solid #ff7954;
-
-}
-
-.C_Genres{
-
-    width: max-content;
-    background: #af513a;
-    border: 5px solid #af513a;
-    border-radius: 25px;
-
-    
-
-}
-.C_Genres:hover{
-
-    cursor: pointer;
-    background: #af513a;
-    border: 5px solid #ff7954;
-
-}
-
 .keyarr{
 
 	background: #af513a;
@@ -146,3 +111,16 @@
 .loader>span:nth-child(7){
 	animation-delay: 1.8s
 }
+
+.fa-heart-o {
+	
+	cursor: pointer;
+	
+}
+
+.fa:hover {
+	color:red;
+	cursor: pointer;
+	
+}
+  
