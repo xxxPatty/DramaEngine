@@ -1,28 +1,42 @@
-
-
-
-
-
 function getRecommend(){
+    console.log("最愛:");
+    favoriteArr = [239529, 316873, 77617, 58574, 497582];
+    console.log(favoriteArr);
 
-    var response={result:[{"title":"電影1"},{"title":"電影2"},{"title":"電影3"},{"title":"電影4"},{"title":"電影5"},{"title":"電影6"},{"title":"電影7"},{"title":"電影8"},{"title":"電影9"},{"title":"電影10"},{"title":"電影1"},{"title":"電影2"},{"title":"電影3"},{"title":"電影4"},{"title":"電影5"},{"title":"電影6"},{"title":"電影7"},{"title":"電影8"},{"title":"電影9"},{"title":"電影10"}]};
-    result=response.result;
+    var data = {movie_id: favoriteArr};
+        console.log(data);
 
-    var moviesHtml = "";
-    moviesHtml+='<div class="show_movie">';
-    for(var i=0; i<result.length; i++){
-        moviesHtml += `<div class="movie">${result[i].title}__</div>`;
-    }
+        var myURL = prefix + "get_my_favorite";
+        $.ajax({
+            url: myURL,
+            type: "POST",
+            data: JSON.stringify(data),
+            async: false,
+            dataType: "json",
+            contentType: 'application/json; charset=utf-8',
+            success: function(response){
+                console.log("成功: 拿到最愛");
+                console.log(response);
+                result=response.data;
 
-    moviesHtml+='</div>';
+                var moviesHtml = "";
+                moviesHtml+='<div class="show_movie">';
+                for(var i=0; i<result.length; i++){
+                    moviesHtml += `<div class="movie">${result[i].title}</div>`;
+                }
 
-    document.getElementById("recommend_output").innerHTML = moviesHtml;
+                moviesHtml+='</div>';
 
+                document.getElementById("recommend_output").innerHTML = moviesHtml;
+            },
+            error: function(response){
+                console.log("失敗: 拿到最愛");
+                console.log(response);
+            }
+        });
 }
 
-
 function start(){
-
     getRecommend();
 
 }

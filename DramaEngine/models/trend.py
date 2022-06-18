@@ -65,7 +65,8 @@ def get_trend(method, year):
     
     #統計電影的類型、關鍵字出現次數
     trend = {}
-    trend['gener'] = {}
+    gener_temp = {}
+    gener_count = {}
     trend['keywords'] = {}
     #print("電影: ")
     for movie in data:
@@ -74,20 +75,30 @@ def get_trend(method, year):
         #print("----------")
         
         for gener in movie['genre_ids']:
-            if gener_id_to_name[gener] not in trend['gener']:
-                trend['gener'][gener_id_to_name[gener]] = 1
+            # 算類型數量
+            if gener_id_to_name[gener] not in gener_count:
+                gener_count[gener_id_to_name[gener]] = 1
             else:
-                trend['gener'][gener_id_to_name[gener]] += 1
+                gener_count[gener_id_to_name[gener]] += 1
+            
+            # 算某類型的關鍵字
+            if gener_id_to_name[gener] not in gener_temp:
+                gener_temp[gener_id_to_name[gener]] = {}
+            
+            for key in movie['keywords']:
+                if key not in gener_temp[gener_id_to_name[gener]]:
+                    gener_temp[gener_id_to_name[gener]][key] = 1
+                else:
+                    gener_temp[gener_id_to_name[gener]][key] += 1
+    
+    # 類型排序
+    gener_count = sorted(gener_count.items(), key=lambda x: x[1], reverse=True)
+    result = []
+    for g in gener_count:
+        temp = []
+        temp.append(g[0])
+        temp.append(g[1])
+        temp.append(sorted(gener_temp[g[0]].items(), key=lambda x: x[1], reverse=True)[0:5])
+        result.append(temp)
         
-        for key in movie['keywords']:
-            if key not in trend['keywords']:
-                trend['keywords'][key] = 1
-            else:
-                trend['keywords'][key] += 1
-    #trend['gener'] = sorted(trend['gener'].items(), key=lambda x: x[1], reverse=True)
-    #trend['keywords'] = sorted(trend['keywords'].items(), key=lambda x: x[1], reverse=True)
-    '''
-    for g in trend['gener']:
-        print(g[0] + " - " + str(g[1]))
-    ''' 
-    return trend
+    return result
