@@ -1,0 +1,59 @@
+.test_float{
+
+    position: relative;
+}
+.show_movie{
+
+    display: flex;
+    flex-direction: column ;
+    
+    justify-content:flex-start;
+    text-align: center;
+    
+    flex-wrap: nowrap;
+    overflow-y:auto;
+
+    width: 90%;
+    height: 90%;
+
+ 
+}
+
+/*
+ *  STYLE 1
+ */
+
+ .show_movie::-webkit-scrollbar-track
+ {
+     
+     border-radius: 10px;
+     background-color: black;
+ }
+ 
+ .show_movie::-webkit-scrollbar
+ {
+     width: 8px;
+     background-color:black;
+ }
+ 
+ .show_movie::-webkit-scrollbar-thumb
+ {
+     border-radius: 10px;
+     background-color: #555;
+ }
+
+
+  
+
+.movie{
+
+    display: flex;
+    justify-content: space-between;
+    border-radius: 15px;
+    border: 2px solid #ff7954;
+    padding: 10px;
+    margin: 8px;
+
+}
+
+

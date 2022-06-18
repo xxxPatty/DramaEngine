@@ -4,7 +4,6 @@ html {
 
 body {
    
-    
     background-image: url(../../img/movie3.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -13,32 +12,6 @@ body {
 
     color:white;
     
-    
-}
-
-
-#title_id{
-
-    
-    display: flex;
-    flex-direction: column ;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-
-    border-radius: 50% 20% / 10% 40%;
-        
-    background: black;
-
-    position: fixed;
-    top: 15%;
-    left:50%;
-    transform: translate(-50%,-50%);
-
-    width: 30%;
-    height: 20%;
-    
-
 }
 
 #title_name{
@@ -50,13 +23,7 @@ body {
 
 }
 
-#title_detial{
-
-    color:gray;
-}
-
-
-#test_display{
+.test_display{
 
     display: flex;
     flex-direction: row ;
@@ -69,7 +36,7 @@ body {
     transform: translate(-50%,-50%);
 
     width: 100%;
-    height: 80%;
+    height: 85%;
 
 }
 
@@ -92,13 +59,21 @@ body {
     display: flex;
     flex-direction: column ;
     justify-content: center;
-    justify-content:space-evenly;
+    justify-content:space-between;
 
 
     width: 90%;
     height: 90%;
 
     
+}
+
+.inpt_type{
+
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    justify-content:space-between;
 }
 
 .user_input{
@@ -113,39 +88,39 @@ body {
     width: 20px;
 }
 
-#Description{
+.input_text{
 
     width: 80%;
 
     position:relative;
-    top: 80%;
+    top: 50%;
     left:50%;
     transform: translate(-50%,-50%);
     
 }
 
 
-#Genres_form{
+#input_form{
+
     display: flex;
-    flex-direction: row ;
+    flex-direction: row;
     flex-wrap:wrap;
-    
-    justify-content:space-around;
 
-}
+    width: 80%;
 
-.Genres{
-
-    width: max-content;
-    border: 5px solid #72625e;
-    border-radius: 25px;
-
+    position:relative;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
     
 
 }
-.Genres:hover{
 
-    cursor: pointer;
-    border: 5px solid #ff7954;
+#input_input{
 
+    display: flex;
+    justify-content: center;
 }
+
+
+

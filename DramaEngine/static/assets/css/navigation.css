@@ -1,0 +1,78 @@
+nav {
+    width: 50%;
+    margin: 0 auto;
+    background: black;
+    padding: 5px 0;
+    text-align: center;
+    justify-content: center;
+    border-radius: 10%;
+
+    position: fixed;
+    top: 14%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
+  
+ 
+  /* By Dominik Biedebach @domobch */
+  nav ul {
+    list-style: none;
+    text-align: center;
+
+    display: inline-block;
+    padding-left: 0px;
+    
+  }
+  nav ul li {
+    display: inline-block;
+
+  }
+  nav ul li a {
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    color: rgb(201, 201, 201);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 0 20px;
+  }
+  nav ul li a,
+  nav ul li a:after,
+  nav ul li a:before {
+    transition: all .5s;
+  }
+  nav ul li a:hover {
+    color:#ff7954;
+  }
+  
+  /* By Dominik Biedebach @domobch */
+  
+  
+  /* stroke */
+  nav.stroke ul li a,
+  nav.fill ul li a {
+    position: relative;
+  }
+  nav.stroke ul li a:after,
+  nav.fill ul li a:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.';
+    color: transparent;
+    background: #ff7954;
+    height: 1px;
+  }
+  nav.stroke ul li a:hover:after {
+    width: 100%;
+  }
+  
+  nav.fill ul li a {
+    transition: all 2s;
+  }
+  /* By Dominik Biedebach @domobch */
+  
+  

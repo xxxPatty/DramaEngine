@@ -4,6 +4,7 @@ var search_by_des = "search_by_description";
 
 var buttonArr;
 
+
 function getGeners(){
     var url = prefix + geners;
     $.ajax({
@@ -35,16 +36,21 @@ function clickButton(id){
     var index = buttonArr.indexOf(id);
     if(index==-1){ //代表原本沒有
         buttonArr.push(id);
+        document.getElementById(id).className="C_Genres";
     }
     else{ //代表原本有
         buttonArr.splice(index, 1);
+        document.getElementById(id).className="Genres";
+
     }
     
     console.log(`目前的陣列: `);
     console.log(buttonArr);
 }
 
+///*
 function search(){
+    loading_ain();
     console.log("開始搜尋");
     var url = prefix + search_by_des;
     var description = document.getElementById("Description").value;
@@ -73,26 +79,89 @@ function search(){
             var result = response.result;
 
             var moviesHtml = "";
+            moviesHtml+='<div class="show_movie" id="output_display">';
             for(var i=0; i<result.length; i++){
-                moviesHtml += `<div>${result[i].title}__</div><br>`;
+                moviesHtml += `<div class="movie">${result[i].title}`;
+                tt=i.toString();
+                var index = favoriteArr.indexOf(tt);
+                if(index==-1){ //代表原本沒有
+                    moviesHtml += `<i id="${result[i].id}" class="fa fa-heart-o" style="font-size:24px;color:red" onclick="clickLike(event)"></i></div>`;
+                }
+                else{ //代表原本有
+                    
+                    moviesHtml += `<i id="${result[i].id}" class="fa fa-heart" style="font-size:24px;color:red" onclick="clickLike(event)"></i></div>`;
+                }
+                
                 console.log(`電影結果: ${result[i].title}`);
             }
-
+            moviesHtml+='</div>';
             if(result.length==0){
                 moviesHtml = "無結果";
             }
 
-            document.getElementById("sever_output").innerHTML = moviesHtml;
+    document.getElementById("sever_output").innerHTML = moviesHtml;
         },
         error: function(){
             console.log("error");
         }
     });
 }
+//*/
+/*
+//測試排版用
+function search(){
+    var response={result:[{"title":"電影1"},{"title":"電影2"},{"title":"電影3"},{"title":"電影4"},{"title":"電影5"},{"title":"電影6"},{"title":"電影7"},{"title":"電影8"},{"title":"電影9"},{"title":"電影10"},{"title":"電影1"},{"title":"電影2"},{"title":"電影3"},{"title":"電影4"},{"title":"電影5"},{"title":"電影6"},{"title":"電影7"},{"title":"電影8"},{"title":"電影9"},{"title":"電影10"}]};
+    result=response.result;
+
+    var moviesHtml = "";
+    moviesHtml+='<div class="show_movie" id="output_display">';
+            for(var i=0; i<result.length; i++){
+                moviesHtml += `<div class="movie">${result[i].title}`;
+                tt=i.toString();
+                var index = favoriteArr.indexOf(tt);
+                if(index==-1){ //代表原本沒有
+                    moviesHtml += `<i id="`+i+`" class="fa fa-heart-o" style="font-size:24px;color:red" onclick="clickLike(event)"></i></div>`;
+                }
+                else{ //代表原本有
+                    
+                    moviesHtml += `<i id="`+i+`" class="fa fa-heart" style="font-size:24px;color:red" onclick="clickLike(event)"></i></div>`;
+                }
+                
+                console.log(`電影結果: ${result[i].title}`);
+            }
+            moviesHtml+='</div>';
+            if(result.length==0){
+                moviesHtml = "無結果";
+            }
+
+    document.getElementById("sever_output").innerHTML = moviesHtml;
+
+
+
+}
+*/
+
+function loading_ain(){
+    var mes="";
+    var place=document.getElementById("sever_output");
+
+    mes='<div class="loader"><span>L</span><span>O</span><span>A</span>'
+        +'<span>D</span><span>I</span><span>N</span><span>G</span></div>';
+    
+    place.innerHTML=mes;
+
+}
 
 function start(){
     buttonArr = [];
-    getGeners();
+    //getGeners();
+
+    loaddata();
+
+    //search();
+
+    
+
 }
 
 window.addEventListener("load", start, false);
