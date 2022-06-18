@@ -25,39 +25,29 @@
     </nav>
 
     <div class="period_display">
-
-
       <div id="time_input" class="select_time period_float">
-
         <div class="tt">
+          <!-- 選 時間 START -->
+          <div id="period">
+            <img src="../static/img/play2.png" class="icon_img"/> time period</br>
+            </br>
 
-        <!-- 選 時間 START -->
-        <div id="period">
-          <img src="../static/img/play2.png" class="icon_img"/> time period</br>
-          </br>
-
-          <div id="period_1" class="period_n sp" value="month" onclick="choose_period(event)">month</div>
-          <div id="period_2" class="period_n sp" value="quarter" onclick="choose_period(event)">quarter</div>
-          <div id="period_3" class="period_n sp" onclick="choose_period(event)">year</div>
-          <div id="period_4" class="period_n sp" onclick="choose_period(event)">years</div>
-          <div id="years_detial" class="sp">
-          </div> 
-
-
+            <div id="period_1" class="period_n sp" value="month" onclick="choose_period(event)">month</div>
+            <div id="period_2" class="period_n sp" value="quarter" onclick="choose_period(event)">quarter</div>
+            <div id="period_3" class="period_n sp" onclick="choose_period(event)">year</div>
+            <div id="period_4" class="period_n sp" onclick="choose_period(event)">years</div>
+            <div id="years_detial" class="sp"></div> 
+          </div>
+          <!-- 選 時間 END -->
         </div>
-        <!-- 選 時間 END -->
-
-
-        
-      </div>
 
       </div>
 
 
-        <!-- 搜尋結果 -->
-        <div id="trend_output" class="period_float" style="overflow: scroll;">
-          
-        </div>
+      <!-- 搜尋結果 -->
+      <div id="trend_loading" class="test_float" style="overflow: scroll;">
+          <div>請選擇左方列表的時間</div>
+      </div>
 
     </div>
   </body>

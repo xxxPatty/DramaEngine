@@ -3,12 +3,11 @@ var years=1;
 
 
 function choose_period(event){
-
+    loading_ain("trend_loading");
     tt=event.target.id;
 
     temp=tt.split("_");
 
-    console.log("periodc: "+periodc);
     if(periodc==0){
         get_trend("month", 0);
     }
@@ -64,3 +63,5 @@ function change_years(event){
     console.log("years: "+years);
     get_trend("years", years);
 }
+
+// window.addEventListener("load", testttt, false);

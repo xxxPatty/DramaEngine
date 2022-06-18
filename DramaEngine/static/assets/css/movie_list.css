@@ -56,6 +56,14 @@
 
 }
 
+.trend{
+    /* display: flex; */
+    border-radius: 15px;
+    border: 2px solid #ff7954;
+    padding: 10px;
+    margin: 8px;
+
+}
 
 .loader{
 	-webkit-perspective:100px;

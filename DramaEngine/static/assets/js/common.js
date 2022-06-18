@@ -33,8 +33,7 @@ function getGeners(){
 }
 
 function get_trend(method, years){
-
-    loading_ain("trend_output");
+    // loading_ain("trend_loading");
     var data = {method: method, years: years};
     console.log(data);
 
@@ -50,24 +49,32 @@ function get_trend(method, years){
             console.log("成功: 拿到最近趨勢（trend）");
             console.log(response);
             result = response.data;
-            var temp = "";
-            temp+='<div class="show_movie">';
+            var temp = "<div class=\"show_movie\">";
+            
 
             for(var i=0; i<result.length; i++){
                 var gener_keyword = result[i];
-                temp += "<br>類型: ";
+                temp+='<div class="trend">';
+                temp += "<h2 style=\"display : inline\">";
                 temp += gener_keyword[0];
-                temp += ", 類型出現次數: ";
+                temp += "</h2>";
+                temp += "<h5 style=\"display : inline\">";
+                temp += " （出現"
                 temp += gener_keyword[1];
-                temp += "<br>關鍵字: ";
+                temp += "次）";
+                temp += "</h5>"
+                
+                //temp += "<br>關鍵字: ";
+                temp += "<p>"
                 for(var j=0; j<gener_keyword[2].length; j++){
-                    temp += "「";
                     temp += gener_keyword[2][j][0];
-                    temp += "」";
+                    temp += "<br>"
                 }
+                temp += "</p>"
+                temp+='</div>';
             }
-            temp+='</div>';
-            document.getElementById("trend_output").innerHTML=temp;
+            temp += "</div>";
+            document.getElementById("trend_loading").innerHTML=temp;
         },
         error: function(response){
             console.log("失敗: 拿到最近趨勢（trend）");
@@ -183,9 +190,9 @@ function search(){
 */
 
 function loading_ain(show_place){
+    console.log("要改的地方是"+show_place);
     var mes="";
     var place=document.getElementById(show_place);
-
     mes='<div class="loader"><span>L</span><span>O</span><span>A</span>'
         +'<span>D</span><span>I</span><span>N</span><span>G</span></div>';
     
