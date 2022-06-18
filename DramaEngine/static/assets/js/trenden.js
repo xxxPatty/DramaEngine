@@ -8,12 +8,13 @@ function choose_period(event){
 
     temp=tt.split("_");
 
-    
-
     //更改了period設定
     if(periodc!=parseInt(temp[1])){
-
+        console.log("呼叫");
+        document.getElementById("trend_loading").innerHTML ="成功修改";
+        console.log(document.getElementById("trend_loading").textContent);
         loading_ain("trend_loading");
+        console.log(document.getElementById("trend_loading").textContent);
         
         periodc=parseInt(temp[1]);
 
@@ -21,13 +22,19 @@ function choose_period(event){
         //periodc在這裡才被改成新的值，然後我是從1開始設的沒有弄0
 
         if(periodc==1){
-            get_trend("month", 0);
+            setTimeout(() => {
+                get_trend("month", 0);
+            }, 1000);
         }
         else if(periodc==2){
-            get_trend("quarter", 0);
+            setTimeout(() => {
+                get_trend("quarter", 0);
+            }, 1000);
         }
         else if(periodc==3){
-            get_trend("year", 0);
+            setTimeout(() => {
+                get_trend("year", 0);
+            }, 1000);
         }
 
         for(var a=1;a<=4;a++){
@@ -70,7 +77,9 @@ function years_show(){
 function change_years(event){
     years=document.getElementById("years").value;
     console.log("years: "+years);
-    get_trend("years", years);
+    setTimeout(() => {
+        get_trend("years", years);
+    }, 1000);
 }
 
 // window.addEventListener("load", testttt, false);

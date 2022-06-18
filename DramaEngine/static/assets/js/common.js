@@ -1,4 +1,4 @@
-var prefix = "http://192.168.0.171:8082/";
+var prefix = "http://172.20.10.2:8082/";
 var geners = "get_all_gener";
 var search_by_des = "search_by_description";
 
@@ -64,7 +64,6 @@ function get_trend(method, years){
                 temp += "次）";
                 temp += "</h5>"
                 
-                //temp += "<br>關鍵字: ";
                 temp += "<p>"
                 for(var j=0; j<gener_keyword[2].length; j++){
                     temp += gener_keyword[2][j][0];
@@ -199,17 +198,3 @@ function loading_ain(show_place){
     place.innerHTML=mes;
 
 }
-
-function start(){
-    buttonArr = [];
-    //getGeners();
-
-    loaddata();
-
-    //search();
-
-    
-
-}
-
-window.addEventListener("load", start, false);

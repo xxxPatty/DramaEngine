@@ -1,11 +1,13 @@
 function getRecommend(){
-
-    //loading_ain("recommend_output");
     console.log("最愛:");
-    favoriteArr = [239529, 316873, 77617, 58574, 497582];
-    console.log(favoriteArr);
-
-    var data = {movie_id: favoriteArr};
+    var myFavorite = [];
+    // favoriteArr = [239529, 316873, 77617, 58574, 497582];
+    for(var i=0; i<localStorage.length;i++){
+        myFavorite.push(parseInt(localStorage.key(i).split(' ')[1]));
+    }
+    console.log(myFavorite);
+    
+    var data = {movie_id: myFavorite};
         console.log(data);
 
         var myURL = prefix + "get_my_favorite";
@@ -38,10 +40,12 @@ function getRecommend(){
         });
 }
 
-function start(){
+function start_recommand(){
+    console.log("recommand的start");
     loading_ain("recommend_output");
-    getRecommend();
-
+    setTimeout(() => {
+        getRecommend();
+    }, 1000);
 }
 
-window.addEventListener("load", start, false);
+window.addEventListener("load", start_recommand, false);
