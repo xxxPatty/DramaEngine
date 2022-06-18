@@ -33,6 +33,8 @@ function getGeners(){
 }
 
 function get_trend(method, years){
+
+    loading_ain("trend_output");
     var data = {method: method, years: years};
     console.log(data);
 
@@ -49,6 +51,7 @@ function get_trend(method, years){
             console.log(response);
             result = response.data;
             var temp = "";
+            temp+='<div class="show_movie">';
 
             for(var i=0; i<result.length; i++){
                 var gener_keyword = result[i];
@@ -63,6 +66,7 @@ function get_trend(method, years){
                     temp += "」";
                 }
             }
+            temp+='</div>';
             document.getElementById("trend_output").innerHTML=temp;
         },
         error: function(response){
@@ -90,7 +94,7 @@ function clickButton(id){
 
 ///*
 function search(){
-    loading_ain();
+    loading_ain("sever_output");
     console.log("開始搜尋");
     var url = prefix + search_by_des;
     var gener = document.getElementById("Genres_user").value;
@@ -178,9 +182,9 @@ function search(){
 }
 */
 
-function loading_ain(){
+function loading_ain(show_place){
     var mes="";
-    var place=document.getElementById("sever_output");
+    var place=document.getElementById(show_place);
 
     mes='<div class="loader"><span>L</span><span>O</span><span>A</span>'
         +'<span>D</span><span>I</span><span>N</span><span>G</span></div>';

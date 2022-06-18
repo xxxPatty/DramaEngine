@@ -1,4 +1,6 @@
 function getRecommend(){
+
+    loading_ain("recommend_output");
     console.log("最愛:");
     favoriteArr = [239529, 316873, 77617, 58574, 497582];
     console.log(favoriteArr);
