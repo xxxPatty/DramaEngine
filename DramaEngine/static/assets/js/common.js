@@ -33,7 +33,7 @@ function getGeners(){
 }
 
 function get_trend(method, years){
-    // loading_ain("trend_loading");
+    //loading_ain("trend_loading");
     var data = {method: method, years: years};
     console.log(data);
 

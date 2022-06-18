@@ -3,24 +3,33 @@ var years=1;
 
 
 function choose_period(event){
-    loading_ain("trend_loading");
+    
     tt=event.target.id;
 
     temp=tt.split("_");
 
-    if(periodc==0){
-        get_trend("month", 0);
-    }
-    else if(periodc==1){
-        get_trend("quarter", 0);
-    }
-    else if(periodc==2){
-        get_trend("year", 0);
-    }
+    
 
     //更改了period設定
     if(periodc!=parseInt(temp[1])){
+
+        loading_ain("trend_loading");
+        
         periodc=parseInt(temp[1]);
+
+
+        //periodc在這裡才被改成新的值，然後我是從1開始設的沒有弄0
+
+        if(periodc==1){
+            get_trend("month", 0);
+        }
+        else if(periodc==2){
+            get_trend("quarter", 0);
+        }
+        else if(periodc==3){
+            get_trend("year", 0);
+        }
+
         for(var a=1;a<=4;a++){
 
             var test=document.getElementById(temp[0]+"_"+a);

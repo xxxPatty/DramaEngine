@@ -1,6 +1,6 @@
 function getRecommend(){
 
-    loading_ain("recommend_output");
+    //loading_ain("recommend_output");
     console.log("最愛:");
     favoriteArr = [239529, 316873, 77617, 58574, 497582];
     console.log(favoriteArr);
@@ -39,6 +39,7 @@ function getRecommend(){
 }
 
 function start(){
+    loading_ain("recommend_output");
     getRecommend();
 
 }
