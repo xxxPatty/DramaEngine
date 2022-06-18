@@ -32,6 +32,46 @@ function getGeners(){
     });
 }
 
+function get_trend(method, years){
+    var data = {method: method, years: years};
+    console.log(data);
+
+    var myURL = prefix + "trend";
+    $.ajax({
+        url: myURL,
+        type: "POST",
+        data: JSON.stringify(data),
+        async: false,
+        dataType: "json",
+        contentType: 'application/json; charset=utf-8',
+        success: function(response){
+            console.log("成功: 拿到最近趨勢（trend）");
+            console.log(response);
+            result = response.data;
+            var temp = "";
+
+            for(var i=0; i<result.length; i++){
+                var gener_keyword = result[i];
+                temp += "<br>類型: ";
+                temp += gener_keyword[0];
+                temp += ", 類型出現次數: ";
+                temp += gener_keyword[1];
+                temp += "<br>關鍵字: ";
+                for(var j=0; j<gener_keyword[2].length; j++){
+                    temp += "「";
+                    temp += gener_keyword[2][j][0];
+                    temp += "」";
+                }
+            }
+            document.getElementById("trend_output").innerHTML=temp;
+        },
+        error: function(response){
+            console.log("失敗: 拿到最近趨勢（trend）");
+            console.log(response);
+        }
+    });
+}
+
 function clickButton(id){
     var index = buttonArr.indexOf(id);
     if(index==-1){ //代表原本沒有
@@ -53,14 +93,11 @@ function search(){
     loading_ain();
     console.log("開始搜尋");
     var url = prefix + search_by_des;
+    var gener = document.getElementById("Genres_user").value;
     var description = document.getElementById("Description").value;
 
-    var e = document.getElementById("type");
-    var type = parseInt(e.value);
-
     var request = {
-        "tv_or_movie": type,
-        "genres_ids": buttonArr,
+        "user_genres": gener.split(','),
         "user_description": description
     };
     console.log("送出去的request: ");
