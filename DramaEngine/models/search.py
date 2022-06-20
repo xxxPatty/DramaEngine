@@ -34,8 +34,10 @@ def search_by_description_model(user_genres, user_description, user_keywords):  
         for genre in movie['genre_ids']:
             movie['genres'].append(genre_dict[genre])
         #用正則表達式比對使用者描述與關鍵字計分
-        search = re.findall(r"(?=("+'|'.join(movie["keywords"])+r"))", user_description)
-        scores = len(search)
+        search = []
+        if movie["keywords"] != []:
+            search = re.findall(r"(?=("+'|'.join(movie["keywords"])+r"))", user_description)
+            scores = len(search)
         movie["scores"] = scores
         #若使用者類型與電影類型匹配，每個加兩分
         for user_genre in user_genres:
