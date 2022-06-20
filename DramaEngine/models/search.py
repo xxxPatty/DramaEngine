@@ -13,7 +13,7 @@ from . import _db
 from opencc import OpenCC
 
 
-def search_by_description_model(user_genres, user_description):  #!!!要多欄位給使用者選嗎？
+def search_by_description_model(user_genres, user_description, user_keywords):  #!!!要多欄位給使用者選嗎？
     all_db_movie = [{'id': i['id'], 'title': i['title'], 'keywords': i['keywords'], 'genre_ids': i['genre_ids'], 'backdrop_path': i['backdrop_path']} for i in _db.MovieInfo_COLLECTION.find()]
     
     api_key = "f53d31e8101decd04ef4135886d2db17"
@@ -41,6 +41,9 @@ def search_by_description_model(user_genres, user_description):  #!!!要多欄�
         for user_genre in user_genres:
             if user_genre in movie['genres']:
                 movie["scores"] += 2
+        for keyword in user_keywords:
+            if keyword in movie["keywords"]:
+                movie["scores"] += 1
         if search != []:
             output_movies.append(movie)
         

@@ -19,7 +19,8 @@ def search_by_description():
     data = request.get_json()
     user_genres = data['user_genres']     #類型list
     user_description = data['user_description']     #描述string
-    result = search.search_by_description_model(user_genres, user_description)
+    user_keywords = data['user_keywords']
+    result = search.search_by_description_model(user_genres, user_description, user_keywords)
     return jsonify({"result":result})
 
 
