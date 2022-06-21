@@ -1,4 +1,4 @@
-var prefix = "http://172.20.10.2:8082/";
+var prefix = "http://192.168.0.171:8082/";
 var geners = "get_all_gener";
 var search_by_des = "search_by_description";
 
@@ -107,7 +107,8 @@ function search(){
     var description = document.getElementById("Description").value;
 
     var request = {
-        "user_genres": gener.split(','),
+        "user_genres": localStorage.getItem("genre"),
+        "user_keywords": localStorage.getItem("key"),
         "user_description": description
     };
     console.log("送出去的request: ");

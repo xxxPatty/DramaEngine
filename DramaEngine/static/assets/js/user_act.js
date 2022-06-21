@@ -1,4 +1,3 @@
-
 var KeyArr=[];
 var GenArr=[];
 
@@ -15,12 +14,16 @@ function inputKey(event){
         if(text!=""){
 
             if(tt[0]=="K"){
+                console.log("key: "+text);
                 KeyArr.push(text);
+                localStorage.setItem("key", KeyArr);
                 showArray("K");
             }
 
             else{
+                console.log("genre: "+text);
                 GenArr.push(text);
+                localStorage.setItem("genre", GenArr);
                 showArray("G");
 
             }
@@ -41,12 +44,13 @@ function deletKey(event){
     if(text[1]=="BKey"){
         KeyArr.splice(parseInt(text[0]), 1);
         showArray("K");
+        localStorage.setItem("key", KeyArr);
     }
 
     else{
         GenArr.splice(parseInt(text[0]), 1);
         showArray("G");
-
+        localStorage.setItem("genre", GenArr);
     }
 
 }
