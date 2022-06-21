@@ -103,12 +103,12 @@ function search(){
     loading_ain("sever_output");
     console.log("開始搜尋");
     var url = prefix + search_by_des;
-    var gener = document.getElementById("Genres_user").value;
+    var genre = localStorage.getItem("genre");
+    var key = localStorage.getItem("key");
     var description = document.getElementById("Description").value;
-
     var request = {
-        "user_genres": localStorage.getItem("genre"),
-        "user_keywords": localStorage.getItem("key"),
+        "user_genres": genre==null? []:genre.split(','),
+        "user_keywords": key==null? []:key.split(','),
         "user_description": description
     };
     console.log("送出去的request: ");
